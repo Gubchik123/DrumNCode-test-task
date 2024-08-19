@@ -196,7 +196,7 @@ class BookViewSetAPITestCase(APITestCase):
         self.assertEqual(Book.objects.count(), 15)
 
     @staticmethod
-    def _get_valid_data():
+    def _get_valid_data() -> dict[str, str]:
         """Returns valid data for creating or updating a book."""
         return {
             "title": "Book",
@@ -206,7 +206,7 @@ class BookViewSetAPITestCase(APITestCase):
             "language": "English",
         }
 
-    def _get_invalid_data(self):
+    def _get_invalid_data(self) -> dict[str, str]:
         """Returns invalid data for creating or updating a book."""
         valid_data = self._get_valid_data()
         valid_data["isbn"] = "9783161484999-"  # * Invalid ISBN

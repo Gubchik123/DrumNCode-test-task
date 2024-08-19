@@ -12,6 +12,6 @@ class Book(models.Model):
     cover = models.URLField(null=True, blank=True)
     language = models.CharField(max_length=50)
 
-    def __str__(self):
+    def __str__(self) -> str:
         """Returns the title as the string representation of the Book model."""
         return self.title

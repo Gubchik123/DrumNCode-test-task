@@ -118,12 +118,12 @@ class BookModelTestCase(TestCase):
         """Test the model string representation by __str__."""
         self.assertEqual(str(self.obj), self.expected_string_representation)
 
-    def _test_required_(self, field):
+    def _test_required_(self, field: str):
         """Test that the given field is required."""
         self.assertFalse(Book._meta.get_field(field).blank)
         self.assertFalse(Book._meta.get_field(field).null)
 
-    def _test_not_required_(self, field):
+    def _test_not_required_(self, field: str):
         """Test that the given field is not required."""
         self.assertTrue(Book._meta.get_field(field).blank)
         self.assertTrue(Book._meta.get_field(field).null)
