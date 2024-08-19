@@ -1,13 +1,19 @@
+import os
+import sys
 from pathlib import Path
 
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = (
-    "django-insecure-@z1b(ki_-+q5))rjs2ikf%s5o=as%4!uxhz_kxv4w5l+j-0+zw"
-)
+SECRET_KEY = os.getenv("SECRET_KEY", " ")
 
-DEBUG = True
+DEBUG = os.getenv("DEBUG", "0").lower() in ["true", "t", "1"]
+DEVELOPMENT = os.getenv("DEVELOPMENT", "0").lower() in ["true", "t", "1"]
+TESTING = len(sys.argv) > 1 and sys.argv[1] == "test"
 
 ALLOWED_HOSTS = []
 
@@ -52,8 +58,12 @@ WSGI_APPLICATION = "project.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "PORT": int(os.getenv("DB_PORT")),
+        "HOST": os.getenv("DB_HOST"),
+        "NAME": os.getenv("DB_NAME"),
+        "USER": os.getenv("DB_USER"),
+        "PASSWORD": os.getenv("DB_PASSWORD"),
     }
 }
 
