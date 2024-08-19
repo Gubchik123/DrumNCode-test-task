@@ -1,0 +1,152 @@
+[
+    {
+        "model": "book.Book",
+        "pk": 1,
+        "fields": {
+            "title": "To Kill a Mockingbird",
+            "author": "Harper Lee",
+            "isbn": "9780061120084",
+            "language": "English"
+        }
+    },
+    {
+        "model": "book.Book",
+        "pk": 2,
+        "fields": {
+            "title": "1984",
+            "author": "George Orwell",
+            "isbn": "9780451524935",
+            "language": "English"
+        }
+    },
+    {
+        "model": "book.Book",
+        "pk": 3,
+        "fields": {
+            "title": "One Hundred Years of Solitude",
+            "author": "Gabriel García Márquez",
+            "isbn": "9780060883287",
+            "language": "Spanish"
+        }
+    },
+    {
+        "model": "book.Book",
+        "pk": 4,
+        "fields": {
+            "title": "Pride and Prejudice",
+            "author": "Jane Austen",
+            "isbn": "9780141439518",
+            "language": "English"
+        }
+    },
+    {
+        "model": "book.Book",
+        "pk": 5,
+        "fields": {
+            "title": "The Catcher in the Rye",
+            "author": "J.D. Salinger",
+            "isbn": "9780316769488",
+            "language": "English"
+        }
+    },
+    {
+        "model": "book.Book",
+        "pk": 6,
+        "fields": {
+            "title": "Moby-Dick",
+            "author": "Herman Melville",
+            "isbn": "9780142437247",
+            "language": "English"
+        }
+    },
+    {
+        "model": "book.Book",
+        "pk": 7,
+        "fields": {
+            "title": "War and Peace",
+            "author": "Leo Tolstoy",
+            "isbn": "9780199232765",
+            "language": "Russian"
+        }
+    },
+    {
+        "model": "book.Book",
+        "pk": 8,
+        "fields": {
+            "title": "The Great Gatsby",
+            "author": "F. Scott Fitzgerald",
+            "isbn": "9780743273565",
+            "language": "English"
+        }
+    },
+    {
+        "model": "book.Book",
+        "pk": 9,
+        "fields": {
+            "title": "Crime and Punishment",
+            "author": "Fyodor Dostoevsky",
+            "isbn": "9780140449136",
+            "language": "Russian"
+        }
+    },
+    {
+        "model": "book.Book",
+        "pk": 10,
+        "fields": {
+            "title": "The Brothers Karamazov",
+            "author": "Fyodor Dostoevsky",
+            "isbn": "9780374528379",
+            "language": "Russian"
+        }
+    },
+    {
+        "model": "book.Book",
+        "pk": 11,
+        "fields": {
+            "title": "Don Quixote",
+            "author": "Miguel de Cervantes",
+            "isbn": "9780060934347",
+            "language": "Spanish"
+        }
+    },
+    {
+        "model": "book.Book",
+        "pk": 12,
+        "fields": {
+            "title": "The Odyssey",
+            "author": "Homer",
+            "isbn": "9780140268867",
+            "language": "Greek"
+        }
+    },
+    {
+        "model": "book.Book",
+        "pk": 13,
+        "fields": {
+            "title": "The Iliad",
+            "author": "Homer",
+            "isbn": "9780140275360",
+            "language": "Greek"
+        }
+    },
+    {
+        "model": "book.Book",
+        "pk": 14,
+        "fields": {
+            "title": "Les Misérables",
+            "author": "Victor Hugo",
+            "isbn": "9780451419439",
+            "language": "French"
+        }
+    },
+    {
+        "model": "book.Book",
+        "pk": 15,
+        "fields": {
+            "title": "The Divine Comedy",
+            "author": "Dante Alighieri",
+            "isbn": "9780199535644",
+            "language": "Italian"
+        }
+    }
+]
