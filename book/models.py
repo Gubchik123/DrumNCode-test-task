@@ -8,7 +8,7 @@ class Book(models.Model):
     author = models.CharField(max_length=255)
     published_date = models.DateField(null=True, blank=True)
     isbn = models.CharField(max_length=13, unique=True)
-    pages = models.IntegerField(null=True, blank=True)
+    pages = models.PositiveIntegerField(null=True, blank=True)
     cover = models.URLField(null=True, blank=True)
     language = models.CharField(max_length=50)
 
