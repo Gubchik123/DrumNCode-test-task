@@ -26,8 +26,7 @@ class BookModelTestCase(TestCase):
 
     def test_title_required(self):
         """Test that the title field is required."""
-        self.assertFalse(Book._meta.get_field("title").blank)
-        self.assertFalse(Book._meta.get_field("title").null)
+        self._test_required_("title")
 
     def test_title_max_length(self):
         """Test that the title max length is 255."""
@@ -42,8 +41,7 @@ class BookModelTestCase(TestCase):
 
     def test_author_required(self):
         """Test that the author field is required."""
-        self.assertFalse(Book._meta.get_field("author").blank)
-        self.assertFalse(Book._meta.get_field("author").null)
+        self._test_required_("author")
 
     def test_author_max_length(self):
         """Test that the author max length is 255."""
@@ -58,8 +56,7 @@ class BookModelTestCase(TestCase):
 
     def test_published_date_not_required(self):
         """Test that the published_date field is not required."""
-        self.assertTrue(Book._meta.get_field("published_date").blank)
-        self.assertTrue(Book._meta.get_field("published_date").null)
+        self._test_not_required_("published_date")
 
     def test_isbn_char_field(self):
         """Test that the isbn field is a CharField."""
@@ -74,8 +71,7 @@ class BookModelTestCase(TestCase):
 
     def test_isbn_required(self):
         """Test that the isbn field is required."""
-        self.assertFalse(Book._meta.get_field("isbn").blank)
-        self.assertFalse(Book._meta.get_field("isbn").null)
+        self._test_required_("isbn")
 
     def test_isbn_max_length(self):
         """Test that the isbn max length is 13."""
@@ -90,8 +86,7 @@ class BookModelTestCase(TestCase):
 
     def test_pages_not_required(self):
         """Test that the pages field is not required."""
-        self.assertTrue(Book._meta.get_field("pages").blank)
-        self.assertTrue(Book._meta.get_field("pages").null)
+        self._test_not_required_("pages")
 
     def test_cover_url_field(self):
         """Test that the cover field is a URLField."""
@@ -102,8 +97,7 @@ class BookModelTestCase(TestCase):
 
     def test_cover_not_required(self):
         """Test that the cover field is not required."""
-        self.assertTrue(Book._meta.get_field("cover").blank)
-        self.assertTrue(Book._meta.get_field("cover").null)
+        self._test_not_required_("cover")
 
     def test_language_char_field(self):
         """Test that the language field is a CharField."""
@@ -114,8 +108,7 @@ class BookModelTestCase(TestCase):
 
     def test_language_required(self):
         """Test that the language field is required."""
-        self.assertFalse(Book._meta.get_field("language").blank)
-        self.assertFalse(Book._meta.get_field("language").null)
+        self._test_required_("language")
 
     def test_language_max_length(self):
         """Test that the language max length is 50."""
@@ -124,3 +117,13 @@ class BookModelTestCase(TestCase):
     def test_model_string_representation(self):
         """Test the model string representation by __str__."""
         self.assertEqual(str(self.obj), self.expected_string_representation)
+
+    def _test_required_(self, field):
+        """Test that the given field is required."""
+        self.assertFalse(Book._meta.get_field(field).blank)
+        self.assertFalse(Book._meta.get_field(field).null)
+
+    def _test_not_required_(self, field):
+        """Test that the given field is not required."""
+        self.assertTrue(Book._meta.get_field(field).blank)
+        self.assertTrue(Book._meta.get_field(field).null)

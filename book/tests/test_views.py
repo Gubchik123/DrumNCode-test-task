@@ -122,26 +122,14 @@ class BookViewSetAPITestCase(APITestCase):
 
     def test_create_book_valid(self):
         """Test that the endpoint creates a book with valid data."""
-        data = {
-            "title": "New Book",
-            "author": "New Author",
-            "published_date": timezone.now().date(),
-            "isbn": "9783161484999",
-            "language": "English",
-        }
+        data = self._get_valid_data()
         response = self.client.post(self.url, data)
         self.assertEqual(response.status_code, 201)
         self.assertEqual(Book.objects.count(), 16)
 
     def test_create_book_invalid(self):
         """Test that the endpoint does not create a book with invalid data."""
-        data = {
-            "title": "New Book",
-            "author": "New Author",
-            "published_date": timezone.now().date(),
-            "isbn": "9783161484999-",  # * Invalid ISBN
-            "language": "English",
-        }
+        data = self._get_invalid_data()
         response = self.client.post(self.url, data)
         self.assertEqual(response.status_code, 400)
         self.assertEqual(Book.objects.count(), 15)
@@ -161,13 +149,7 @@ class BookViewSetAPITestCase(APITestCase):
     def test_update_book_valid(self):
         """Test that the endpoint updates a book with valid data."""
         book = Book.objects.first()
-        data = {
-            "title": "Updated Book",
-            "author": "Updated Author",
-            "published_date": timezone.now().date(),
-            "isbn": "9783161484999",
-            "language": "English",
-        }
+        data = self._get_valid_data()
         response = self.client.put(f"{self.url}{book.pk}/", data)
         self.assertEqual(response.status_code, 200)
         book.refresh_from_db()
@@ -176,13 +158,7 @@ class BookViewSetAPITestCase(APITestCase):
     def test_update_book_invalid(self):
         """Test that the endpoint does not update a book with invalid data."""
         book = Book.objects.first()
-        data = {
-            "title": "Updated Book",
-            "author": "Updated Author",
-            "published_date": timezone.now().date(),
-            "isbn": "9783161484999-",  # * Invalid ISBN
-            "language": "English",
-        }
+        data = self._get_invalid_data()
         response = self.client.put(f"{self.url}{book.pk}/", data)
         self.assertEqual(response.status_code, 400)
         book.refresh_from_db()
@@ -218,3 +194,20 @@ class BookViewSetAPITestCase(APITestCase):
         response = self.client.delete(f"{self.url}999/")
         self.assertEqual(response.status_code, 404)
         self.assertEqual(Book.objects.count(), 15)
+
+    @staticmethod
+    def _get_valid_data():
+        """Returns valid data for creating or updating a book."""
+        return {
+            "title": "Book",
+            "author": "Author",
+            "published_date": timezone.now().date(),
+            "isbn": "9783161484999",
+            "language": "English",
+        }
+
+    def _get_invalid_data(self):
+        """Returns invalid data for creating or updating a book."""
+        valid_data = self._get_valid_data()
+        valid_data["isbn"] = "9783161484999-"  # * Invalid ISBN
+        return valid_data
